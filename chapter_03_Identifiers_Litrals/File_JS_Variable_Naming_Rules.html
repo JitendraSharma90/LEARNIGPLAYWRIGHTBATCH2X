@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Variable Naming Rules - Every Valid & Invalid Example</title>
+    <style>
+        body { font-family: Consolas, monospace; padding: 20px; background: #1e1e1e; color: #d4d4d4; }
+        h1 { color: #569cd6; }
+        h2 { color: #4ec9b0; margin-top: 30px; }
+        h3 { color: #dcdcaa; margin-top: 20px; }
+        .valid { background: #1a3a2a; border-left: 4px solid #4ec9b0; padding: 6px 12px; margin: 4px 0; }
+        .invalid { background: #3a1a1a; border-left: 4px solid #f44747; padding: 6px 12px; margin: 4px 0; }
+        .info { background: #1a2a3a; border-left: 4px solid #569cd6; padding: 6px 12px; margin: 4px 0; }
+        code { color: #ce9178; }
+        .comment { color: #6a9955; }
+        .keyword { color: #569cd6; }
+        .string { color: #ce9178; }
+        .error { color: #f44747; }
+        pre { margin: 0; }
+        .output { color: #b5cea8; }
+        .section { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+<h1>JavaScript Variable Naming Rules</h1>
+<p><em>All valid & invalid identifier combinations demonstrated</em></p>
+
+<div id="results"></div>
+
+<script>
+    const out = document.getElementById('results');
+    function add(html) { out.innerHTML += html; }
+
+    // -----------------------------------------------------------------------
+    // RULE 1: Must start with letter, underscore (_), or dollar sign ($)
+    // -----------------------------------------------------------------------
+    add(`<h2>1. Starting Character Rules</h2>`);
+
+    // --- Valid starts ---
+    add(`<h3>Valid Start Characters</h3>`);
+
+    add(`<div class="valid"><pre>let name       = "Jitendra";  <span class="comment">// Starts with letter</span></pre></div>`);
+    let name = "Jitendra";
+
+    add(`<div class="valid"><pre>let _name      = "Sharma";    <span class="comment">// Starts with underscore</span></pre></div>`);
+    let _name = "Sharma";
+
+    add(`<div class="valid"><pre>let $name      = "Dev";       <span class="comment">// Starts with dollar</span></pre></div>`);
+    let $name = "Dev";
+
+    add(`<div class="valid"><pre>let _          = "underscore"; <span class="comment">// Single underscore (valid)</span></pre></div>`);
+    let _ = "underscore";
+
+    add(`<div class="valid"><pre>let $          = "dollar";     <span class="comment">// Single dollar (valid)</span></pre></div>`);
+    let $ = "dollar";
+
+    add(`<div class="valid"><pre>let A          = "uppercase";  <span class="comment">// Uppercase letter (valid)</span></pre></div>`);
+    let A = "uppercase";
+
+    add(`<div class="valid"><pre>let ñoño       = "valid";      <span class="comment">// Unicode letters (valid)</span></pre></div>`);
+    let ñoño = "valid";
+
+    add(`<div class="valid"><pre>let 你好        = "Chinese";    <span class="comment">// Unicode letters (valid)</span></pre></div>`);
+    let 你好 = "Chinese";
+
+    // --- Invalid starts ---
+    add(`<h3>Invalid Start Characters</h3>`);
+    add(`<div class="invalid"><pre>let 1name;     <span class="error">// ERROR: Cannot start with digit</span></pre></div>`);
+    add(`<div class="invalid"><pre>let 2ndPlace;  <span class="error">// ERROR: Cannot start with digit</span></pre></div>`);
+    add(`<div class="invalid"><pre>let 3;         <span class="error">// ERROR: Cannot start with digit</span></pre></div>`);
+    add(`<div class="invalid"><pre>let 123;       <span class="error">// ERROR: Cannot start with digit</span></pre></div>`);
+    add(`<div class="invalid"><pre>let !name;     <span class="error">// ERROR: Cannot start with special char (except _ $)</span></pre></div>`);
+    add(`<div class="invalid"><pre>let @name;     <span class="error">// ERROR: Cannot start with special char</span></pre></div>`);
+    add(`<div class="invalid"><pre>let #name;     <span class="error">// ERROR: Cannot start with special char</span></pre></div>`);
+    add(`<div class="invalid"><pre>let %name;     <span class="error">// ERROR: Cannot start with special char</span></pre></div>`);
+    add(`<div class="invalid"><pre>let *name;     <span class="error">// ERROR: Cannot start with special char</span></pre></div>`);
+    add(`<div class="invalid"><pre>let (name;     <span class="error">// ERROR: Cannot start with special char</span></pre></div>`);
+
+    // -----------------------------------------------------------------------
+    // RULE 2: Can contain letters, digits, underscore, dollar sign
+    // -----------------------------------------------------------------------
+    add(`<h2>2. Body Characters (after the first character)</h2>`);
+
+    add(`<h3>Valid</h3>`);
+    add(`<div class="valid"><pre>let myVar1      = "ok";  <span class="comment">// letters + digit</span></pre></div>`);
+    let myVar1 = "ok";
+    add(`<div class="valid"><pre>let my_var      = "ok";  <span class="comment">// underscore</span></pre></div>`);
+    let my_var = "ok";
+    add(`<div class="valid"><pre>let my$var      = "ok";  <span class="comment">// dollar sign</span></pre></div>`);
+    let my$var = "ok";
+    add(`<div class="valid"><pre>let _123        = "ok";  <span class="comment">// digits after underscore</span></pre></div>`);
+    let _123 = "ok";
+    add(`<div class="valid"><pre>let $123_456    = "ok";  <span class="comment">// mixed body chars</span></pre></div>`);
+    let $123_456 = "ok";
+    add(`<div class="valid"><pre>let myVar99_$$  = "ok";  <span class="comment">// letters + digits + _ $</span></pre></div>`);
+    let myVar99_$$ = "ok";
+
+    add(`<h3>Invalid</h3>`);
+    add(`<div class="invalid"><pre>let my-var;     <span class="error">// ERROR: hyphen (-) not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my var;     <span class="error">// ERROR: space not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let first.name; <span class="error">// ERROR: dot (.) not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my@var;     <span class="error">// ERROR: @ not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my#var;     <span class="error">// ERROR: # not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my!var;     <span class="error">// ERROR: ! not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my%var;     <span class="error">// ERROR: % not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my^var;     <span class="error">// ERROR: ^ not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my&var;     <span class="error">// ERROR: & not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my*var;     <span class="error">// ERROR: * not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my(var;     <span class="error">// ERROR: ( not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my)var;     <span class="error">// ERROR: ) not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my+var;     <span class="error">// ERROR: + not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my=var;     <span class="error">// ERROR: = not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my{var;     <span class="error">// ERROR: { not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my}var;     <span class="error">// ERROR: } not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my[var;     <span class="error">// ERROR: [ not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my]var;     <span class="error">// ERROR: ] not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my|var;     <span class="error">// ERROR: | not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my\\var;    <span class="error">// ERROR: \\ not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my:var;     <span class="error">// ERROR: : not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my;var;     <span class="error">// ERROR: ; not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my"var;     <span class="error">// ERROR: " not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my'var;     <span class="error">// ERROR: ' not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my<var;     <span class="error">// ERROR: < not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my>var;     <span class="error">// ERROR: > not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my,var;     <span class="error">// ERROR: , not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my?var;     <span class="error">// ERROR: ? not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my/var;     <span class="error">// ERROR: / not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my~var;     <span class="error">// ERROR: ~ not allowed</span></pre></div>`);
+    add(`<div class="invalid"><pre>let my\`var;    <span class="error">// ERROR: backtick not allowed</span></pre></div>`);
+
+    // -----------------------------------------------------------------------
+    // RULE 3: Reserved Keywords (cannot be used as variable names)
+    // -----------------------------------------------------------------------
+    add(`<h2>3. Reserved Keywords (cannot be used as variable names)</h2>`);
+    add(`<div class="info"><pre>All JavaScript keywords are reserved. Using them as variable names throws an error.</pre></div>`);
+
+    const keywords = [
+        // Current keywords
+        'await', 'break', 'case', 'catch', 'class', 'const',
+        'continue', 'debugger', 'default', 'delete', 'do', 'else',
+        'enum', 'export', 'extends', 'false', 'finally', 'for',
+        'function', 'if', 'import', 'in', 'instanceof', 'let',
+        'new', 'null', 'return', 'super', 'switch', 'this',
+        'throw', 'true', 'try', 'typeof', 'var', 'void',
+        'while', 'with', 'yield',
+        // Future reserved in strict mode
+        'implements', 'interface', 'package', 'private',
+        'protected', 'public', 'static'
+    ];
+
+    keywords.forEach(kw => {
+        add(`<div class="invalid"><pre>let ${kw};  <span class="error">// ERROR: '${kw}' is a reserved keyword</span></pre></div>`);
+    });
+
+    // -----------------------------------------------------------------------
+    // RULE 4: Case Sensitivity
+    // -----------------------------------------------------------------------
+    add(`<h2>4. Case Sensitivity</h2>`);
+    add(`<div class="info"><pre>JavaScript variable names are case-sensitive. Each is a distinct variable.</pre></div>`);
+
+    let myvar = "lowercase v";
+    let myVar = "uppercase V";
+    let MyVar = "uppercase M";
+    let MYVAR = "all uppercase";
+
+    add(`<div class="valid"><pre>let myvar = "${myvar}";</pre></div>`);
+    add(`<div class="valid"><pre>let myVar = "${myVar}";</pre></div>`);
+    add(`<div class="valid"><pre>let MyVar = "${MyVar}";</pre></div>`);
+    add(`<div class="valid"><pre>let MYVAR = "${MYVAR}";</pre></div>`);
+    add(`<div class="valid"><pre>console.log(myvar, myVar, MyVar, MYVAR); <span class="comment">// All different!</span></pre></div>`);
+
+    // -----------------------------------------------------------------------
+    // RULE 5: Cannot use same name with same declaration keyword in same scope
+    // -----------------------------------------------------------------------
+    add(`<h2>5. Redeclaration Rules</h2>`);
+    add(`<div class="info"><pre>let/const cannot be redeclared in the same scope. var can be redeclared (but don't).</pre></div>`);
+    add(`<div class="invalid"><pre>let x = 1;</pre></div>`);
+    add(`<div class="invalid"><pre>let x = 2;  <span class="error">// ERROR: Identifier 'x' has already been declared</span></pre></div>`);
+
+    // -----------------------------------------------------------------------
+    // RULE 6: Using `let`, `const`, `var` as variable name
+    // -----------------------------------------------------------------------
+    add(`<h2>6. Declaration Keywords as Variable Names</h2>`);
+    add(`<div class="invalid"><pre>var let    = 1;  <span class="error">// ERROR: unexpected token</span></pre></div>`);
+    add(`<div class="invalid"><pre>var const  = 2;  <span class="error">// ERROR: unexpected token</span></pre></div>`);
+    add(`<div class="invalid"><pre>var var    = 3;  <span class="error">// ERROR: unexpected token</span></pre></div>`);
+
+    // -----------------------------------------------------------------------
+    // RULE 7: Global properties that should not be used
+    // -----------------------------------------------------------------------
+    add(`<h2>7. Global Properties (technically valid, but DON'T use)</h2>`);
+    add(`<div class="info"><pre>These are not reserved words but overriding them breaks JS.</pre></div>`);
+    add(`<div class="invalid"><pre>let undefined = 1;  <span class="error">// BAD: overrides global undefined</span></pre></div>`);
+    add(`<div class="invalid"><pre>let NaN = 1;        <span class="error">// BAD: overrides global NaN</span></pre></div>`);
+    add(`<div class="invalid"><pre>let Infinity = 1;   <span class="error">// BAD: overrides global Infinity</span></pre></div>`);
+    add(`<div class="invalid"><pre>let eval = 1;       <span class="error">// BAD: overrides global eval</span></pre></div>`);
+    add(`<div class="invalid"><pre>let arguments = 1;  <span class="error">// BAD: overrides arguments in functions</span></pre></div>`);
+
+    // -----------------------------------------------------------------------
+    // RULE 8: Variable name length & practical valid examples
+    // -----------------------------------------------------------------------
+    add(`<h2>8. Summary of Practical Valid Patterns</h2>`);
+
+    add(`<h3>camelCase (recommended for variables)</h3>`);
+    add(`<div class="valid"><pre>let firstName      = "Jitendra";</pre></div>`);
+    add(`<div class="valid"><pre>let lastName       = "Sharma";</pre></div>`);
+    add(`<div class="valid"><pre>let userAge        = 25;</pre></div>`);
+    add(`<div class="valid"><pre>let isValidUser    = true;</pre></div>`);
+    add(`<div class="valid"><pre>let getData        = () => {};</pre></div>`);
+
+    add(`<h3>PascalCase (recommended for classes/constructors)</h3>`);
+    add(`<div class="valid"><pre>class UserAccount   { }</pre></div>`);
+    add(`<div class="valid"><pre>class PersonModel   { }</pre></div>`);
+    add(`<div class="valid"><pre>class HttpRequest   { }</pre></div>`);
+
+    add(`<h3>SCREAMING_SNAKE_CASE (recommended for constants)</h3>`);
+    add(`<div class="valid"><pre>const MAX_RETRIES      = 3;</pre></div>`);
+    add(`<div class="valid"><pre>const API_BASE_URL     = "https://api.example.com";</pre></div>`);
+    add(`<div class="valid"><pre>const COLOR_RED        = "#FF0000";</pre></div>`);
+    add(`<div class="valid"><pre>const PI_VALUE         = 3.14159;</pre></div>`);
+
+    add(`<h3>Underscore prefix (common for private/internal)</h3>`);
+    add(`<div class="valid"><pre>let _privateVar   = "internal";</pre></div>`);
+    add(`<div class="valid"><pre>let _tempValue    = 0;</pre></div>`);
+    add(`<div class="valid"><pre>let __proto__     = null;</pre></div>`);
+
+    add(`<h3>Dollar prefix (common for jQuery/DOM references)</h3>`);
+    add(`<div class="valid"><pre>let $button       = document.querySelector('button');</pre></div>`);
+    add(`<div class="valid"><pre>let $container    = document.getElementById('main');</pre></div>`);
+    add(`<div class="valid"><pre>let $$items       = document.querySelectorAll('li');</pre></div>`);
+
+    // -----------------------------------------------------------------------
+    // Live validation demo
+    // -----------------------------------------------------------------------
+    add(`<h2>9. Live Test - Try Naming Variables</h2>`);
+    add(`<div class="info"><pre>Enter a variable name and click Test:</pre></div>`);
+    add(`
+        <div style="margin:10px 0;">
+            <input type="text" id="varName" placeholder="Enter variable name" style="padding:8px;font-size:16px;width:300px;font-family:Consolas;">
+            <select id="testScope" style="padding:8px;font-size:16px;font-family:Consolas;">
+                <option value="let">let</option>
+                <option value="const">const</option>
+                <option value="var">var</option>
+            </select>
+            <button onclick="testVarName()" style="padding:8px 16px;font-size:16px;">Test</button>
+        </div>
+        <div id="testResult" style="padding:8px;font-family:Consolas;font-size:14px;"></div>
+    `);
+
+    window.testVarName = function() {
+        const name = document.getElementById('varName').value.trim();
+        const decl = document.getElementById('testScope').value;
+        const result = document.getElementById('testResult');
+
+        if (!name) {
+            result.innerHTML = `<span class="error">Please enter a name</span>`;
+            return;
+        }
+
+        try {
+            // Try to actually evaluate it
+            const code = `${decl} ${name} = 1;`;
+            new Function(code)();
+            result.innerHTML = `<span class="valid" style="border-left:none;background:transparent;padding:0;">
+                ✅ <code>${decl} ${name} = 1;</code> is <strong>VALID</strong>
+            </span>`;
+        } catch (e) {
+            result.innerHTML = `<span class="invalid" style="border-left:none;background:transparent;padding:0;">
+                ❌ <code>${decl} ${name} = 1;</code> is <strong>INVALID</strong><br>
+                <span class="error">→ ${e.message}</span>
+            </span>`;
+        }
+    };
+
+    // -----------------------------------------------------------------------
+    // Complete rules summary
+    // -----------------------------------------------------------------------
+    add(`<h2>10. Quick Reference Card</h2>`);
+    add(`
+        <div class="info">
+            <pre><span class="keyword">Rules for JavaScript Identifiers:</span>
+
+  ✅ <span class="string">Valid first character:</span>  letter (a-z, A-Z), _ , $
+  ✅ <span class="string">Valid body characters:</span>  letter, digit, _ , $
+  ✅ <span class="string">Case-sensitive:</span>         myVar ≠ myvar ≠ MyVar
+  ✅ <span class="string">Unicode allowed:</span>        ñoño, 你好, Français
+
+  ❌ <span class="error">Cannot start with:</span>      digit (0-9)
+  ❌ <span class="error">Cannot contain:</span>         space, -, ., @, #, !, %, ^, &, *, (, ), +, =, etc.
+  ❌ <span class="error">Cannot be keywords:</span>      let, const, if, else, for, return, etc.
+  ❌ <span class="error">Cannot redeclare (let/const):</span> same name in same scope
+
+  📌 <span class="comment">Conventions (not enforced, but widely followed):</span>
+     - <span class="keyword">camelCase</span>         → variables, functions  (e.g., getUserName)
+     - <span class="keyword">PascalCase</span>        → classes              (e.g., UserProfile)
+     - <span class="keyword">SCREAMING_SNAKE_CASE</span> → constants         (e.g., MAX_COUNT)
+     - <span class="keyword">$prefix</span>           → DOM elements         (e.g., $btn)
+     - <span class="keyword">_prefix</span>           → private/internal     (e.g., _temp)
+        </pre></div>
+    `);
+
+    // Log successful execution
+    console.log('All valid variable examples executed successfully.');
+</script>
+
+</body>
+</html>
