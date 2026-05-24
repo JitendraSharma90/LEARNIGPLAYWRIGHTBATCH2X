@@ -22,6 +22,9 @@ JavaScript fundamentals workbook for a Playwright automation training course.
 - **File_JS_Variable_Naming_Rules.html** — interactive HTML tester for variable names
 - **VS_Code_Keyboard_shortcut_Windows.md** — VS Code default keyboard shortcuts for Windows
 
+### chapter_04_JavaScript_concept
+- **var_let_const_comparison.md** — detailed var vs let vs const comparison with code examples, scope, hoisting, TDZ, and loop behavior
+
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) (v18+)
