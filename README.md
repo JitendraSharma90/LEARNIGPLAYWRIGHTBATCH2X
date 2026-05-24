@@ -22,8 +22,17 @@ JavaScript fundamentals workbook for a Playwright automation training course.
 - **File_JS_Variable_Naming_Rules.html** — interactive HTML tester for variable names
 - **VS_Code_Keyboard_shortcut_Windows.md** — VS Code default keyboard shortcuts for Windows
 
-### chapter_04_JavaScript_concept
-- **var_let_const_comparison.md** — detailed var vs let vs const comparison with code examples, scope, hoisting, TDZ, and loop behavior
+### chapter_04_Javascript_concept
+- **09_Var_let_const.js** — var, let, const basic declaration examples
+- **10_Javascript_functions.js** — function declaration and invocation
+- **11_var_Explained.js** — var keyword deep dive
+- **12_let_people_love.js** — let keyword usage and benefits
+- **13_const_concept.js** — const keyword and immutability
+- **14_let_FunctionScopedExample.js** — let in function scope
+- **15_var_FunctionScopedExample.js** — var in function scope (placeholder)
+- **16_Hoisting.js** — hoisting behavior with var, let, const
+- **17_Hoisting_fn.js** — function hoisting examples
+- **var_let_const_comparison.md** — detailed var vs let vs const comparison with code examples, scope, TDZ, and loop behavior
 
 ## Prerequisites
 
