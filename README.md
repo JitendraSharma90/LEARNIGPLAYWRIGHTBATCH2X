@@ -28,6 +28,19 @@ JavaScript fundamentals workbook for a Playwright automation training course.
 - [VS Code](https://code.visualstudio.com/)
 - [Playwright](https://playwright.dev/)
 
+## var vs let vs const
+
+| Feature | `var` | `let` | `const` |
+|---|---|---|---|
+| **Scope** | Function-scoped | Block-scoped `{}` | Block-scoped `{}` |
+| **Redeclaration** | ✅ Allowed | ❌ Not allowed | ❌ Not allowed |
+| **Reassignment** | ✅ Allowed | ✅ Allowed | ❌ Not allowed |
+| **Hoisting** | Hoisted (initialized as `undefined`) | Hoisted (not initialized — TDZ) | Hoisted (not initialized — TDZ) |
+| **Temporal Dead Zone** | ❌ No | ✅ Yes | ✅ Yes |
+| **Global Object Property** | ✅ Added to `window` | ❌ Not added | ❌ Not added |
+| **Must Initialize** | ❌ No (`var x;` → `undefined`) | ❌ No (`let x;` → `undefined`) | ✅ Yes (`const x = 1;`) |
+| **Use Case** | Avoid (legacy) | Mutable variables | Constants / immutable bindings |
+
 ## Usage
 
 Run any `.js` file with Node:
