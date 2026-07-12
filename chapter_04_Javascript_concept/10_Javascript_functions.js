@@ -25,7 +25,7 @@ console.log(add(5, 10)); // This will print 15 to the console
 console.log(add(5, 20)); // This will print 25 to the console
 
 
-//New example
+//New example of function to calculate area of a rectangle
 function calculateArea(length, width) {
     return length * width;
 }

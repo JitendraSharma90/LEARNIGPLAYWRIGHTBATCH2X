@@ -24,4 +24,13 @@ console.log(name);
 // This will throw a ReferenceError: name is not defined, because 'name' is block-scoped to the if statement
 //console.log(name); // This will throw a ReferenceError: name is not defined, because 'name' is block-scoped to the if statement
 
+//example of blocked scope of let in a loop
+for (let i = 0; i < 5; i++) {
+    console.log(i); // This will print numbers from 0 to 4
+}
+//()-
+//If(){}- block scope of let
+//function(){}- block scope of let
+
+
 

@@ -6,3 +6,5 @@ let c = 15;
 let d = 4;
 console.log(c % d); // 3 (15 divided by 4 leaves a remainder of 3)      
 
+//n%2 == 0 (even number)
+//n%2 == 1 (odd number) 

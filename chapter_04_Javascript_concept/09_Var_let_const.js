@@ -25,3 +25,4 @@ for (var i = 0; i < testcase.length; i++) {
 console.log("Loop counter out of the loop  i =", i); // 'i' is accessible here due to var's function scope
 
 // let and const have block scope, so 'i' would not be accessible outside the loop if we used let instead of var
+
